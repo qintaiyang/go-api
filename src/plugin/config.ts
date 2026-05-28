@@ -113,8 +113,6 @@ export function installPlugin(apiKey: string, projectRoot: string, models?: Mode
       ],
     },
   ];
-  // 清理旧格式 init
-  delete settings.hooks.init;
 
   // env — base config
   if (!settings.env) settings.env = {};
@@ -169,10 +167,6 @@ export function removePluginConfig(): boolean {
     delete settings.hooks.SessionStart;
     changed = true;
   }
-  if (typeof settings.hooks?.init === 'string' && cmdHasPlugin(settings.hooks.init)) {
-    delete settings.hooks.init;
-    changed = true;
-  }
   if (settings.hooks && Object.keys(settings.hooks).length === 0) {
     delete settings.hooks;
   }
@@ -205,9 +199,7 @@ function hookHasPlugin(hookGroup: Record<string, unknown>): boolean {
 }
 
 function hasPluginHook(settings: ClaudeSettings): boolean {
-  if (settings.hooks?.SessionStart?.some((g) => hookHasPlugin(g as Record<string, unknown>))) return true;
-  if (typeof settings.hooks?.init === 'string' && cmdHasPlugin(settings.hooks.init)) return true;
-  return false;
+  return !!settings.hooks?.SessionStart?.some((g) => hookHasPlugin(g as Record<string, unknown>));
 }
 
 export function isPluginInstalled(): boolean {
