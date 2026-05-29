@@ -125,11 +125,9 @@ export function installPlugin(apiKey: string, projectRoot: string, models?: Mode
   if (models) {
     settings.env.ANTHROPIC_MODEL = models.model || 'deepseek-v4-flash[1m]';
     settings.env.ANTHROPIC_DEFAULT_HAIKU_MODEL = models.haiku || models.model || 'deepseek-v4-flash[1m]';
-    settings.env.ANTHROPIC_DEFAULT_SONNET_MODEL = models.sonnet || models.model || 'deepseek-v4-pro';
-    settings.env.ANTHROPIC_DEFAULT_OPUS_MODEL = models.opus || models.model || 'deepseek-v4-pro';
-    if (models.subagent) {
-      settings.env.CLAUDE_CODE_SUBAGENT_MODEL = models.subagent;
-    }
+    settings.env.ANTHROPIC_DEFAULT_SONNET_MODEL = models.sonnet || models.model || 'deepseek-v4-flash[1m]';
+    settings.env.ANTHROPIC_DEFAULT_OPUS_MODEL = models.opus || models.model || 'deepseek-v4-pro[1m]';
+    settings.env.CLAUDE_CODE_SUBAGENT_MODEL = models.subagent || models.model || 'deepseek-v4-flash[1m]';
     settings.env.CLAUDE_CODE_EFFORT_LEVEL = 'max';
     settings.env.CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC = '1';
   }

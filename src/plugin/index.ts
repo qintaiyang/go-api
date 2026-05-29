@@ -122,11 +122,11 @@ export async function handleCommand(args: string[]): Promise<void> {
       }
 
       // 默认模型配置
-      let defaultModel = 'deepseek-v4-flash';
-      let fastModel = 'deepseek-v4-flash';
-      let sonnetModel = 'deepseek-v4-pro';
-      let opusModel = 'deepseek-v4-pro';
-      let subagentModel = 'deepseek-v4-flash';
+      let defaultModel = 'deepseek-v4-flash[1m]';
+      let fastModel = 'deepseek-v4-flash[1m]';
+      let sonnetModel = 'deepseek-v4-flash[1m]';
+      let opusModel = 'deepseek-v4-pro[1m]';
+      let subagentModel = 'deepseek-v4-flash[1m]';
       let wantsDetail = false;
 
       if (apiKeyArg) {
